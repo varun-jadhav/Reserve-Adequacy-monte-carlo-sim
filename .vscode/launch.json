@@ -1,0 +1,75 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "1. Clean data",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/clean_data.py",
+            "args": ["${input:lineOfBusiness}"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "2. Build triangle (example company)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/build_triangle.py",
+            "args": ["${input:lineOfBusiness}"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "3. Link ratios (example company)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/link_ratios.py",
+            "args": ["${input:lineOfBusiness}"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "4. Simulate (example company)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/simulate.py",
+            "args": ["${input:lineOfBusiness}"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "5. Run full pipeline",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/run_pipeline.py",
+            "args": ["${input:lineOfBusinessOrAll}"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "6. Make figures",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/make_figures.py",
+            "args": ["${input:lineOfBusinessOrAll}"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "lineOfBusiness",
+            "type": "pickString",
+            "description": "Line of business",
+            "options": ["wkcomp", "ppauto", "comauto", "medmal", "prodliab", "othliab"],
+            "default": "wkcomp"
+        },
+        {
+            "id": "lineOfBusinessOrAll",
+            "type": "pickString",
+            "description": "Line of business (or all)",
+            "options": ["all", "wkcomp", "ppauto", "comauto", "medmal", "prodliab", "othliab"],
+            "default": "all"
+        }
+    ]
+}
