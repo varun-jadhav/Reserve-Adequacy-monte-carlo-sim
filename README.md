@@ -77,6 +77,9 @@ no premium-based prior expected losses are used anywhere.
 6. **Figures** (`src/make_figures.py`) — a single-company end-to-end visual
    per line, plus the cross-line risk comparison.
 
+
+![End-to-end pipeline example: upper triangle, link ratio pools, and simulated ultimate loss distribution for one company](results/figures/pipeline_stages_wkcomp.png)
+
 All parameters (accident-year window, simulation count, seed, file paths)
 live in `src/config.py`.
 
@@ -136,6 +139,8 @@ Results are deterministic (fixed random seed).
 | Workers' Compensation | 12.9% | 11.7% | 0.097 |
 | Private Passenger Auto | 22.9% | 18.1% | 0.031 |
 
+![Reserve shortfall risk and uncertainty across all six lines of business](results/figures/cross_line_comparison.png)
+
 Two observations worth noting:
 
 - **Reserve uncertainty tracks tail length almost perfectly.** The
@@ -149,6 +154,9 @@ Two observations worth noting:
   different things: long-tail lines appear to be reserved with more
   cushion relative to their uncertainty, while short-tail reserves are set
   tighter to expected values.
+
+
+
 
 ## Limitations
 
