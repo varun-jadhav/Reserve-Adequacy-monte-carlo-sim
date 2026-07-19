@@ -26,18 +26,29 @@ long-tail business.
 
 ## Data
 
-Source: the Casualty Actuarial Society (CAS) Loss Reserving Database,
-compiled by Glenn Meyers and Peng Shi from NAIC Schedule P regulatory
-filings; downloaded from the CAS research resources page ("Loss Reserving
-Data Pulled From NAIC Schedule P"). Each line is a separate CSV with an
-identical schema. Each row is one (company, accident year, development lag)
-snapshot: cumulative paid losses, incurred losses, bulk/IBNR reserves, and
-net earned premium, plus the reserve the company actually posted at
-year-end 2007 (`PostedReserves2007`) used as the adequacy benchmark.
+Source: [Loss Reserving Data Pulled from NAIC Schedule P with Additional
+Accident Years](https://www.casact.org/publications-research/research/research-resources/loss-reserving-data-pulled-naic-schedule-p),
+Casualty Actuarial Society (CAS). The current data (December 2025) was
+compiled for the CAS by **S&P Global Market Intelligence**; this project
+acknowledges accessing the files from the CAS research page as compiled by
+S&P, per the CAS's request.
 
-The six raw files are kept separate end-to-end (mirroring how CAS publishes
-them); only the final per-company **results** are concatenated for the
-cross-line comparison.
+The data comes from **NAIC Schedule P**, filed by every U.S.
+property-casualty insurer, covering six lines: private passenger auto,
+commercial auto, workers' compensation, medical malpractice (claims-made),
+other liability (occurrence), and product liability (occurrence). Each row
+is one (company, accident year, development lag) snapshot — 10 accident
+years (1998–2007) x 10 development lags per company, net of reinsurance.
+
+Key columns used here: `CumPaidLoss` (cumulative paid losses),
+`EarnedPremNet` (net earned premium), and `PostedReserves2007` (reserves
+posted at year-end 2007 — the adequacy benchmark). `GRCODE`/`GRNAME`
+identify the insurer (group or single entity, per the `Single` flag).
+
+CAS/S&P also applied their own sampling filter before publishing (complete
+10x10 history, consistent reporting across years, non-zero premium) — this
+project's own cleaning (`src/clean_data.py`) applies a similar filter on
+top of that. See `data/raw/SOURCE.md` for the file-to-line mapping.
 
 ## Method
 
